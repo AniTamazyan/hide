@@ -1,36 +1,54 @@
 import { Component } from "react";
+import Card1 from './Card1';
+import Card2 from './Card2'
+import Card3 from './Card3';;
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isVisible: true,
+      name: 'React',
+      isVisible1: false,
+      isVisible2: false,
+      isVisible3: false,
     };
-    this.toggle = this.toggle.bind(this);
+    this.hideCard = this.hideCard.bind(this);
   }
 
-  toggle() {
-    this.setState({
-      isVisible: false,
-    })
+  hideCard(name) {
+    switch(name) {
+      case 'isVisible1': 
+        this.setState({isVisible1: !this.state.isVisible1});
+        break;
+      case 'isVisible2': 
+        this.setState({isVisible2: !this.state.isVisible2});
+        break;
+      case 'isVisible3': 
+        this.setState({isVisible3: !this.state.isVisible3});
+        break;
+        default: return;
+    }
   }
   render() {
-    const { isVisible } = this.state;
+    const { isVisible1, isVisible2, isVisible3 } = this.state;
     return(  
-        // {
-        //   isVisible?
-        // }
-       <div className='cards'>
-        <div className='card'><span className='cardNamber'>Card 1</span> 
-       <span className='close' onClick={() => this.toggle}>X</span></div>
+      <div className='cards'>
+        {isVisible1 && <Card1 /> }
+        {isVisible1 || <button onClick={() => this.hideCard('isVisible1')}>
+           Show
+        </button>}
 
-       <div className='card'><span className='cardNamber'>Card 2</span>
-         <span className='close' onClick={() => this.toggle}>X</span></div>
+        {isVisible2 && <Card2 />}
+        {isVisible2 || <button onClick={() => this.hideCard('isVisible2')}>
+           Show
+        </button>}
 
-        <div className='card'><span className='cardNamber'>Card 3</span> 
-       <span className='close' onClick={() => this.toggle}>X</span></div> 
-     </div>
+        {isVisible3 && <Card3 />}
+        {isVisible3 || <button onClick={() => this.hideCard('isVisible3')}>
+           Show
+        </button>}
+      </div>
     );
   }
 }

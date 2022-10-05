@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Card1 extends Component{
+class Card3 extends Component{
     constructor() {
         super();
         this.state = {
@@ -11,11 +11,11 @@ class Card1 extends Component{
     render() {
         return (
             <div className='card'>
-                <span className='cardNamber'>Card 1</span> 
-                <span className='close' onClick={() => this.hideCard('isVisible1')}>X</span>
+                <span className='cardNamber'>Card 3</span> 
+                <span className='close'>X</span>
           </div>
         )
     }
 }
 
-export default Card1;
+export default Card3;
